@@ -1,0 +1,176 @@
+@import "@fontsource-variable/montserrat";
+@import "@fontsource/lato";
+@import "tailwindcss";
+
+:root {
+  --font-sans: "Montserrat Variable", Montserrat, sans-serif;
+  --font-lato: "Lato", Lato, sans-serif;
+  --ink: #17212b;
+  --muted: #6b7785;
+  --line: #dbe4ec;
+  --surface: #ffffff;
+  --surface-soft: #f5f9fb;
+  --brand: #0f766e;
+  --brand-dark: #0b5f59;
+  --accent: #f4b860;
+  color: var(--ink);
+  background: #f3f4f6;
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 360px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background: #f3f4f6;
+}
+
+button {
+  cursor: pointer;
+}
+
+.page-bg-icons {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-bg-icons::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  content: "";
+  background:
+    radial-gradient(circle at 50% 50%, rgba(9, 9, 15, 0.06) 0 24rem, transparent 39rem),
+    linear-gradient(180deg, rgba(9, 9, 15, 0.46) 0%, transparent 24%, transparent 70%, rgba(9, 9, 15, 0.52) 100%);
+}
+
+.page-bg-icon {
+  position: absolute;
+  z-index: 1;
+  width: 118px;
+  height: 118px;
+  color: rgba(196, 181, 253, 0.05);
+  filter: blur(0.15px);
+}
+
+.page-bg-icon--btc {
+  top: 12%;
+  left: 5%;
+  width: 210px;
+  height: 210px;
+  color: rgba(56, 189, 248, 0.04);
+  transform: rotate(-18deg);
+}
+
+.page-bg-icon--eth {
+  top: 9%;
+  right: 7%;
+  width: 250px;
+  height: 250px;
+  color: rgba(196, 181, 253, 0.0475);
+  transform: rotate(12deg);
+}
+
+.page-bg-icon--bnb {
+  bottom: 8%;
+  left: 10%;
+  width: 180px;
+  height: 180px;
+  color: rgba(244, 184, 96, 0.035);
+  transform: rotate(20deg);
+}
+
+.page-bg-icon--xrp {
+  right: 13%;
+  bottom: 6%;
+  width: 230px;
+  height: 230px;
+  color: rgba(125, 211, 252, 0.0325);
+  transform: rotate(-10deg);
+}
+
+.chart-card {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(56, 189, 248, 0.14), transparent 34%),
+    linear-gradient(145deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.94) 54%, rgba(2, 6, 23, 0.96));
+  animation: panel-pop 480ms cubic-bezier(0.2, 1.18, 0.34, 1) both;
+  box-shadow:
+    0 18px 45px rgba(17, 24, 39, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.chart-card::before {
+  position: absolute;
+  inset: 24px;
+  content: "";
+  border: 1px solid rgb(219 228 236 / 14%);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.swap-form {
+  animation: panel-pop 480ms 70ms cubic-bezier(0.2, 1.18, 0.34, 1) both;
+}
+
+.modal-backdrop {
+  animation: backdrop-in 220ms ease-out both;
+}
+
+.currency-modal {
+  background:
+    linear-gradient(90deg, rgba(15, 118, 110, 0.1) 0 5px, transparent 5px),
+    #ffffff;
+  animation: modal-pop 340ms cubic-bezier(0.2, 1.18, 0.34, 1) both;
+}
+
+@keyframes panel-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes backdrop-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-card,
+  .swap-form,
+  .modal-backdrop,
+  .currency-modal {
+    animation: none;
+  }
+}

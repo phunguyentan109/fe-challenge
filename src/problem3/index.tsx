@@ -15,10 +15,10 @@ interface Props extends PropsWithChildren {}
 
 const App: React.FC<Props> = (props: Props) => {
 	const { children, ...rest } = props;
-	const balances = useWalletBalances();
+	const balances = useWalletBalances() as WalletBalance[];
 	const prices = usePrices();
 
-	const balanceStringify = balances.reduce((acc, n) => {
+	const balanceStringify = balances.reduce((acc: string, n) => {
 		acc += `-${n.currency}-${n.amount}-${n.blockchain}`;
 
 		return acc;
@@ -67,11 +67,12 @@ const App: React.FC<Props> = (props: Props) => {
 
 	const rows = formattedBalances.map(
 		(balance: FormattedWalletBalance, index: number) => {
+			// currency price changes over time, so it's best to avoid memorizing the usdValue in the useMemo above
 			const usdValue = prices[balance.currency] * balance.amount;
 			return (
 				<WalletRow
 					className={classes.row}
-					key={index}
+					key={`${balance.currency}-${balance.blockchain}`}
 					amount={balance.amount}
 					usdValue={usdValue}
 					formattedAmount={balance.formatted}

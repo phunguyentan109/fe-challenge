@@ -39,6 +39,7 @@ const sortedBalances = useMemo(() => {
 ```
 
 3. `formattedBalances` is not being used anywhere in the component.
+   - **Solution**: Check the code to see if it should be used in somewhere or remove it.
 ```typescript jsx
 const formattedBalances = sortedBalances.map((balance: WalletBalance) => {
     return {
